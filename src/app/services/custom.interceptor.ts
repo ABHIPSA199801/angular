@@ -12,23 +12,23 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
   if(localData != null) {
     loggedUserData =  JSON.parse(localData);
   }
-
+  const token = localStorage.getItem('loginTOken');
   const cloneRequest =  req.clone({
     setHeaders:{
-      Authorization: `Bearer ${loggedUserData.token}`
+      Authorization: `Bearer ${token}`
     }
   });
 
   return next(cloneRequest).pipe(
     catchError((error: HttpErrorResponse)=>{
       debugger;
-      if(error.status === 401) {
-        const isRefrsh =  confirm("Your Session is Expred. Do you want to Continue");
-        if(isRefrsh) {
-          userSrv.$refreshToken.next(true);
-        }
+      // if(error.status === 401) {
+      //   const isRefrsh =  confirm("Your Session is Expred. Do you want to Continue");
+      //   if(isRefrsh) {
+      //     userSrv.$refreshToken.next(true);
+      //   }
 
-      } 
+      // } 
       return throwError(error)
     })
   );

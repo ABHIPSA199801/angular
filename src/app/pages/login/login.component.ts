@@ -22,9 +22,14 @@ export class LoginComponent {
 
   login() {
     debugger;
-    this.userSrv.onLogin(this.loginObj).subscribe((res:any)=> {
+    const usrb = {
+      username:this.loginObj.EmailId,
+      password: this.loginObj.Password
+    }
+    this.userSrv.onLogin(usrb).subscribe((res:any)=> {
       debugger;
       if(res.result) {
+        localStorage.setItem('loginTOken', res.data.token);
         localStorage.setItem('angular17TokenData', JSON.stringify(res.data));
         localStorage.setItem('angular17TokenEmail', res.data.emailId);
         localStorage.setItem('angular17TokenUserId', res.data.userId);

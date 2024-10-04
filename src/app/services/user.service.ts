@@ -18,7 +18,7 @@ export class UserService {
    }
 
   onLogin(obj: any)   {
-    return this.http.post("https://freeapi.gerasim.in/api/JWT/login", obj)
+    return this.http.post("https://localhost:44355/api/ClientStrive/Login", obj)
   }
 
   getRefreshToken()   {
@@ -40,6 +40,6 @@ export class UserService {
   }
  
   getUsers()   {
-    return this.http.get("https://freeapi.gerasim.in/api/JWT/GetAllUsers")
+    return this.http.get("https://localhost:44355/api/ClientStrive/GetAllEmployee")
   }
 }
