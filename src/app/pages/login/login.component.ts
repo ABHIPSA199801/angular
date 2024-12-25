@@ -28,7 +28,7 @@ export class LoginComponent {
     }
     this.userSrv.onLogin(usrb).subscribe((res:any)=> {
       debugger;
-      if(res.result) {
+      if(res) {
         localStorage.setItem('loginTOken', res.data.token);
         localStorage.setItem('angular17TokenData', JSON.stringify(res.data));
         localStorage.setItem('angular17TokenEmail', res.data.emailId);

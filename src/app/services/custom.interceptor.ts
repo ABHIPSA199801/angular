@@ -15,7 +15,8 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('loginTOken');
   const cloneRequest =  req.clone({
     setHeaders:{
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+    
     }
   });
 
